@@ -1,0 +1,21 @@
+# This is a comment.
+# Each line is a file pattern followed by one or more owners.
+# See: https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/about-code-owners
+
+# These owners will be the default owners for everything in the repo.
+# Unless a later match takes precedence, these will be requested for
+# review when someone opens a pull request. Once approved, PR creators
+# are encouraged to merge their own PRs.
+* @networktocode-llc/ntc-dev-standards
+
+# Order is important; the last matching pattern takes the most
+# precedence.
+
+/ansible-collection/ @jvanderaa @jmcgill298 @davidban77
+/ansible-project/ @jvanderaa @jmcgill298 @davidban77
+/netbox-plugin/ @glennmatthews @jathanism @dgarros @nniehoff
+/nautobot-plugin/ @glennmatthews @jathanism @dgarros @nniehoff @FragmentedPacket
+/netbox/ @glennmatthews @dgarros @FragmentedPacket @jathanism @nniehoff
+/nautobot/ @glennmatthews @dgarros @FragmentedPacket @jathanism @nniehoff
+/python/ @jathanism @jvanderaa @FragmentedPacket
+/examples/ @davidban77

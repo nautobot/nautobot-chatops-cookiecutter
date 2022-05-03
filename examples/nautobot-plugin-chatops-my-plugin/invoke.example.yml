@@ -1,0 +1,12 @@
+---
+nautobot_plugin_chatops_my_plugin:
+  project_name: "nautobot-plugin-chatops-my-plugin"
+  nautobot_ver: "latest"
+  local: false
+  python_ver: "3.7"
+  compose_dir: "development"
+  compose_files:
+    - "docker-compose.requirements.yml"
+    - "docker-compose.base.yml"
+    - "docker-compose.dev.yml"
+    - "docker-compose.mattermost-dev.yml"
