@@ -17,9 +17,7 @@ Below are the steps outlined in detail for getting started along with various ti
 
 ## Generating a New Nautobot Chatops Plugin
 
-Let's walk you through baking a **nautobot-chatops-plugin**.
-
-> NOTE: It is recommended to leave these first 4 options as default:
+Let's walk you through baking a **nautobot-chatops-plugin** cookie.
 
 | Setting                         | Description                                                                                     |
 | ------------------------------- | ----------------------------------------------------------------------------------------------- |
@@ -42,22 +40,28 @@ Let's walk you through baking a **nautobot-chatops-plugin**.
 > NOTE: Cookiecutter by default bakes the new cookie within the current working directory. If that is not desirable then use the `-o` option to specify a different output folder.
 
 ```bash
-➜ cookiecutter nautobot-plugin-chatops -o /path/to/dest/output/folder
-chatops_interactive_command [my_plugin]:
-plugin_name [nautobot_plugin_chatops_my_plugin]:
-verbose_name [Nautobot Plugin Chatops My Plugin]:
-plugin_slug [nautobot-plugin-chatops-my-plugin]:
-project_slug [nautobot-plugin-chatops-my-plugin]:
-min_nautobot_version [1.0.1]:
-max_nautobot_version [1.9999]:
-nautobot_version [latest]:
-camel_name [NautobotPluginChatopsMyPlugin]:
-project_short_description [Nautobot Plugin Chatops My Plugin]:
-version [0.1.0]:
+❯ cookiecutter nautobot-plugin-chatops-cookiecutter
+
+full_name [Nautobot Chatops Plugin]: email [mail@example.com]: 
+chatops_interactive_command [my_plugin]: 
+plugin_name [nautobot_plugin_chatops_my_plugin]: 
+verbose_name [Nautobot Plugin Chatops My Plugin]: 
+plugin_slug [nautobot-plugin-chatops-my-plugin]: 
+project_slug [nautobot-plugin-chatops-my-plugin]: 
+min_nautobot_version [1.2.0]: 
+max_nautobot_version [1.9999]: 
+nautobot_version [latest]: 
+camel_name [NautobotPluginChatopsMyPlugin]: 
+project_short_description [Nautobot Plugin Chatops My Plugin]: 
+version [0.1.0]: 
 Select open_source_license:
 1 - Apache-2.0
-2 - Not open source or other
-Choose from 1, 2 [1]:
+2 - Not open source
+Choose from 1, 2 [1]: 
+Select setup_local_mattermost_dev_env:
+1 - Yes
+2 - No
+Choose from 1, 2 [1]: 
 
 Congratulations!  Your cookie has now been baked.
 
@@ -115,9 +119,9 @@ There is no additional setup needed. After a few seconds, you can test this depl
 **Mattermost**
 
 - Go to http://localhost:8065/ntcteam/messages/@ntcbot
-- Log in using the default `admin/Ntc01234!!` credentials.
+- Log in using the default `admin/Nautobot123!!` credentials.
   - These are set in `development/development.env`, and may have been changed.
-- Send a direct message to @ntcbot. You should be able to run an example command `/chatops_interactive_command hello-world test`, where "chatops_interactive_command" is what was configured for the last question during cookiecutter template generation.
+- Send a direct message to @nautobot-bot. You should be able to run an example command `/chatops_interactive_command hello-world test`, where "chatops_interactive_command" is what was configured for the last question during cookiecutter template generation.
 
 **Nautobot**
 
