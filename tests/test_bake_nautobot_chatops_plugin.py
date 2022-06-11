@@ -74,7 +74,6 @@ def test_bake_project(cookies):
     found_toplevel_files = [f.basename for f in result.project.listdir()]
     assert "pyproject.toml" in found_toplevel_files
     assert "README.md" in found_toplevel_files
-    assert "LICENSE" in found_toplevel_files
 
 
 def test_bake_nautobot_execution(cookies_baked_nautobot_chatops_plugin):
