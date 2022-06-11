@@ -2,8 +2,8 @@
 name = "nautobot-plugin-chatops-cookiecutter"
 version = "0.1.0"
 description = "CookieCutter template for Nautobot ChatOps Plugin"
-authors = ["Josh VanDeraa <jv@networktocode.com>"]
-license = "MIT"
+authors = ["Network to Code, LLC <info@networktocode.com>"]
+license = "Apache-2.0"
 
 [tool.poetry.dependencies]
 python = "^3.7"
@@ -20,3 +20,8 @@ toml = "^0.10.2"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests"
+]
