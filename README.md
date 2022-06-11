@@ -26,7 +26,6 @@ Let's walk you through baking a **nautobot-chatops-plugin**.
 | **codeowner_github_usernames**  | The Github codeowners for the new plugin                                                        |
 | **full_name**                   | Used in the **author** field within `pyproject.toml` and `PluginConfig`                         |
 | **email**                       | Used in the **author** field within `pyproject.toml`                                            |
-| **github_org**                  | Used to construct **repo_url**                                                                  |
 | **chatops_interactive_command** | Slash command used to interact with Bot in chat client                                          |
 | **plugin_name**                 | The Python name of the plugin                                                                   |
 | **verbose_name**                | Used in `PluginConfig`                                                                          |
@@ -45,16 +44,11 @@ Let's walk you through baking a **nautobot-chatops-plugin**.
 
 ```bash
 ➜ cookiecutter nautobot-plugin-chatops -o /path/to/dest/output/folder
-codeowner_github_usernames []:
-full_name [Network to Code, LLC]:
-email [info@networktocode.com]:
-github_org [nautobot]:
 chatops_interactive_command [my_plugin]:
 plugin_name [nautobot_plugin_chatops_my_plugin]:
 verbose_name [Nautobot Plugin Chatops My Plugin]:
 plugin_slug [nautobot-plugin-chatops-my-plugin]:
 project_slug [nautobot-plugin-chatops-my-plugin]:
-repo_url [https://github.com/nautobot/nautobot-plugin-chatops-my-plugin]:
 min_nautobot_version [1.0.1]:
 max_nautobot_version [1.9999]:
 nautobot_version [latest]:

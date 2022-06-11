@@ -7,8 +7,6 @@ authors = ["{{cookiecutter.full_name}} <{{cookiecutter.email}}>"]
 license = "{{cookiecutter.open_source_license}}"
 {%- endif %}
 readme = "README.md"
-homepage = "{{cookiecutter.repo_url}}"
-repository = "{{cookiecutter.repo_url}}"
 keywords = ["nautobot", "nautobot-plugin", "nautobot-chatops-plugin"]
 include = [
 {%- if cookiecutter.open_source_license == 'Apache-2.0' %}
