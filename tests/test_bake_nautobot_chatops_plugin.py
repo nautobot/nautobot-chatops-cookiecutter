@@ -49,13 +49,13 @@ def cookies_baked_nautobot_chatops_plugin(cookies):
     examples_projects = {}
     results = {}
     plugin_slug = f"nautobot-plugin-chatops-my-plugin"
-    results[plugin_slug] = cookies.bake(
-        extra_context={
-            "open_source_license": "Not open source or other",
-        }
-    )
+    # results[plugin_slug] = cookies.bake(
+    #     extra_context={
+    #         "open_source_license": "Not open source or other",
+    #     }
+    # )
 
-    assert results[plugin_slug].exception is None
+    # assert results[plugin_slug].exception is None
 
     examples_projects[plugin_slug] = init_examples_project(
         results[plugin_slug].project.basename
