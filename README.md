@@ -23,14 +23,13 @@ Let's walk you through baking a **nautobot-chatops-plugin**.
 
 | Setting                         | Description                                                                                     |
 | ------------------------------- | ----------------------------------------------------------------------------------------------- |
-| **codeowner_github_usernames**  | The Github codeowners for the new plugin                                                        |
 | **full_name**                   | Used in the **author** field within `pyproject.toml` and `PluginConfig`                         |
 | **email**                       | Used in the **author** field within `pyproject.toml`                                            |
 | **chatops_interactive_command** | Slash command used to interact with Bot in chat client                                          |
 | **plugin_name**                 | The Python name of the plugin                                                                   |
 | **verbose_name**                | Used in `PluginConfig`                                                                          |
 | **plugin_slug**                 | Python packaging name                                                                           |
-| **project_slug**                | Used to construct **repo_url**                                                                  |
+| **project_slug**                | Slug for the project                                                                            |
 | **base_url**                    | Defines plugin's base url used in Nautobot                                                      |
 | **min_nautobot_version**        | The minimum supported Nautobot version                                                          |
 | **max_nautobot_version**        | The maximum supported Nautobot version                                                          |
