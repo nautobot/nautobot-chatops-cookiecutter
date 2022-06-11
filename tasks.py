@@ -32,8 +32,8 @@ def tests(context):
 )
 def baked_test(context, build=False, example="*", template=""):
     """Execute tests within a baked cookiecutter example."""
-    if not template:
-        sys.exit("-t / --template parameter is required!")
+    # if not template:
+    #     sys.exit("-t / --template parameter is required!")
     if not glob(f"{template}/examples/{example}"):
         sys.exit(f"No example matching '{example}' found for template '{template}'")
     for baked_cookie in glob(f"{template}/examples/{example}"):
