@@ -1,0 +1,21 @@
+{
+  "full_name": "Nautobot Chatops Plugin",
+  "email": "mail@example.com",
+  "chatops_interactive_command": "my_plugin",
+  "plugin_name": "nautobot_plugin_chatops_{{cookiecutter.chatops_interactive_command}}",
+  "verbose_name": "{{cookiecutter.plugin_name.title().replace('_', ' ')}}",
+  "plugin_slug": "{{cookiecutter.plugin_name.lower().replace(' ', '-').replace('_', '-')}}",
+  "project_slug": "{{cookiecutter.plugin_slug}}",
+  "min_nautobot_version": "1.2.0",
+  "max_nautobot_version": "1.9999",
+  "nautobot_version": "latest",
+  "camel_name": "{{cookiecutter.plugin_slug.title().replace('-', '')}}",
+  "project_short_description": "{{cookiecutter.verbose_name}}",
+  "version": "0.1.0",
+  "open_source_license": ["Apache-2.0", "Not open source"],
+  "setup_local_mattermost_dev_env": ["Yes", "No"],
+  "_copy_without_render": [
+    ".github/actions/setup-environment/action.yml",
+    ".github/workflows/ci.yml"
+  ]
+}
