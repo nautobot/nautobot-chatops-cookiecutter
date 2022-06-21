@@ -27,19 +27,6 @@ def hello_world(dispatcher, arg1):
 
     # Logic/external API calls go here
 
-    # Send Markdown formatted text
-    # dispatcher.send_markdown(f"Markdown formatted text goes here.")
-
-    # Send block of text
-    # dispatcher.send_blocks(
-    #     [
-    #         *dispatcher.command_response_header(
-    #             "my_plugin", "hello-world",
-    #         ),
-    #         dispatcher.markdown_block(f"example-return-string"),
-    #     ]
-    # )
-
     # Send a menu prompt
     # An example leveraging Nautobot resources can be found at:
     # https://github.com/nautobot/nautobot-plugin-chatops/blob/develop/nautobot_chatops/workers/nautobot.py
@@ -53,6 +40,19 @@ def hello_world(dispatcher, arg1):
     #         "Select name",
     #         choices,
     #     )
+
+    # Send Markdown formatted text as a result
+    # dispatcher.send_markdown(f"Markdown formatted text goes here.")
+
+    # Send block of text
+    # dispatcher.send_blocks(
+    #     [
+    #         *dispatcher.command_response_header(
+    #             "my_plugin", "hello-world",
+    #         ),
+    #         dispatcher.markdown_block(f"example-return-string"),
+    #     ]
+    # )
 
     # Send large table
     # dispatcher.send_large_table(
