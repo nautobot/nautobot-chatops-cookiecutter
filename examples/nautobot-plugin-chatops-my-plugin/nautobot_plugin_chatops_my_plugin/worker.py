@@ -25,7 +25,6 @@ def hello_world(dispatcher, arg1):
     # Creating an instance of NautobotPluginChatopsMyPlugin for pylint
     NautobotPluginChatopsMyPlugin()
 
-    # Logic/external API calls go here
 
     # Send a menu prompt
     # An example leveraging Nautobot resources can be found at:
