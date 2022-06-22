@@ -25,9 +25,24 @@ def hello_world(dispatcher, arg1):
     # Creating an instance of NautobotPluginChatopsMyPlugin for pylint
     NautobotPluginChatopsMyPlugin()
 
-    # Logic/external API calls go here
 
-    # Send Markdown formatted text
+    # Send a menu prompt
+    # An example leveraging Nautobot resources can be found at:
+    # https://github.com/nautobot/nautobot-plugin-chatops/blob/develop/nautobot_chatops/workers/nautobot.py
+    #
+    # In this example, a small list is created to send a prompt back
+    #
+    # if not arg1:
+    #     choices = [("Name", "name-slug"), ("Name2", "name-slug2")]
+    #     dispatcher.prompt_from_menu(
+    #         "my_plugin get-menu",
+    #         "Select name",
+    #         choices,
+    #     )
+
+    # Logic/external API calls go here
+    
+    # Send Markdown formatted text as a result
     # dispatcher.send_markdown(f"Markdown formatted text goes here.")
 
     # Send block of text
