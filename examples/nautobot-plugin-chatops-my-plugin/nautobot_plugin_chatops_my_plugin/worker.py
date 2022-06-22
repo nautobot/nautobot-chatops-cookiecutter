@@ -41,6 +41,8 @@ def hello_world(dispatcher, arg1):
     #         choices,
     #     )
 
+    # Logic/external API calls go here
+    
     # Send Markdown formatted text as a result
     # dispatcher.send_markdown(f"Markdown formatted text goes here.")
 
