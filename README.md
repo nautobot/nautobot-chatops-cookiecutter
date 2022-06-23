@@ -1,6 +1,12 @@
 # nautobot-chatops-cookiecutter
 
+| Przemek: What is the name of this software? `nautobot-chatops-cookiecutter` sounds more like a package name.
+
+| Przemek: We should add short description of what this project does. What can I, as an end user, achieve wit it.
+
 ## Why Cookiecutter?
+
+| Przemek: We are explaining Cookiecutter terminology but it would be helpful to first have a sentence or two on what Cookiecutter is.
 
 Before we get started, let's provide some context around the terminology used within Cookiecutter.
 
@@ -8,6 +14,10 @@ Before we get started, let's provide some context around the terminology used wi
 * **bake/baking** - The output of a cookie. If a cookie is baked, it means the project was created from a Cookiecutter template.
 
 CookieCutter was choosen as a method as it provides the capability to provide a customized set of data based on a question/answer setup to help get customization in place.
+ 
+| Przemek: "CookieCutter was chosen as a method" - a method for what? Also, might be helpful to reword this sentence, it's a bit difficult to read.
+
+| Przemek: Replace instances of "CookieCutter" with "Cookiecutter"
 
 Check out the [Python CookieCutter documentation](https://cookiecutter.readthedocs.io/en/1.7.2/) for more details of the project.
 
@@ -15,9 +25,14 @@ Check out the [Python CookieCutter documentation](https://cookiecutter.readthedo
 
 Below are the steps outlined in detail for getting started along with various tips and tricks that may be beneficial.
 
+| Przemek: I would simplify this sentence to: "Below are the detailed steps for getting started, along with various tips and tricks."
+
+
 ## Generating a New Nautobot Chatops Plugin
 
 Let's walk you through baking a **nautobot-chatops-plugin** cookie.
+
+| Przemek: Add description of what the below table shows.
 
 | Setting                         | Description                                                                                     |
 | ------------------------------- | ----------------------------------------------------------------------------------------------- |
@@ -38,6 +53,10 @@ Let's walk you through baking a **nautobot-chatops-plugin** cookie.
 | **open_source_license**         | Determine if project is open source or not                                                      |
 
 > NOTE: Cookiecutter by default bakes the new cookie within the current working directory. If that is not desirable then use the `-o` option to specify a different output folder.
+
+| Przemek: Change "... different output folder." to "... different output directory."
+
+| Przemek: Provide a sentence explaining what the below code block shows. Should make it clear that the variable will get a default value in `[]` if enter is pressed without value being provided.
 
 ```bash
 ❯ cookiecutter nautobot-plugin-chatops-cookiecutter
@@ -83,7 +102,11 @@ Follow the directions provided at the end of baking the cookie.
 
 Here is an example of what your directory structure may look like (subject to change as the project is developed over time).
 
+| Przemek: "subject to change as the project is developed over time" - does this refer to the fact that as developer works on the plugin the structure will change? If so then perhaps this can be replaced by "... structure may look like initally.".
+
 > NOTE: there are hidden files not displayed in the below output.
+
+| Przemek: What are the hidden files? Do they matter?
 
 ```bash
 ➜ ll nautobot-plugin-chatops-my-plugin
@@ -101,11 +124,20 @@ drwxr-xr-x  7 ntc  staff   224B Aug  3 08:15 nautobot_plugin_chatops_my_plugin
 
 Once the cookie is generated the next step is to start developing the plugin! If you're not familiar with the development environment provided by this cookie, we recommend checking out the `GETTING_STARTED.md` located in the root of the newly baked cookie or checkout the generated **README** for a quick start guide.
 
+| Przemek: "Once the cookie is generated" - should we stick to the terminology and replace "generatd" with "baked"?
+
+| Przemek: Consider changing "If you're not familiar with the development environment provided by this cookie, we recommend checking out the `GETTING_STARTED.md` located in the root of the newly baked cookie or checkout the generated **README** for a quick start guide." to "To get familiar with the development environment provided by this cookie, we recommend checking out the `GETTING_STARTED.md` or  `README.md` located in the root directory of the newly baked cookie."
+
 ## Automate local dev environment setup with Mattermost
+
+| Przemek: What is Mattermost?
 
 The baked cookie supports the automated setup of a local Mattermost instance to quickly test your chatops plugin. All settings and credentials will be pre-configured, and a separate Docker container will run Mattermost in the background, accessible at http://localhost:8065
 
 To setup this environment, after creating the `creds.env` file and running `poetry lock` run the following invoke commands from the plugin folder, using the optional `-m` or `--mattermost` flags:
+
+| Przemek: Suggested rewording: "To set up this environment, you must first run `poetry lock` command and have `creds.env` file in place. Then you run the following invoke commands from within the plugin folder, using the `-m` or `--mattermost` flag:
+
 
 ```bash
 ➜ poetry shell             # Activate poetry environment
@@ -142,6 +174,8 @@ If you prefer to not use the local Mattermost instance for development purposes,
 You must configure the relevant ChatOps plugin variables in development/creds.env. For example, if you want to use Slack, configure the relevant API token, secret, and set `enable_slack` to true.
 
 Once done, setup the relevant SaaS application is setup on the backend. Follow the instructions found in the [Nautobot ChatOps Plugin](https://github.com/nautobot/nautobot-plugin-chatops/blob/develop/docs/chat_setup.md) repo.
+
+| Przemek: Change "Once done, setup the relevant SaaS application is setup on the backend." to "Once done, setup the relevant SaaS application on the backend."
 
 Then run the following commands:
 
