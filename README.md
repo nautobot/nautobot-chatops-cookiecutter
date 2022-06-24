@@ -1,15 +1,17 @@
 # nautobot-chatops-cookiecutter
 
+ This project is meant to get you started on your way of creating Nautobot ChatOps commands quickly. When running through the cookie cutting template, there are a few questions that will help dynamically create content within the final "baked cookie" project. This will create a new repository that will be the new chat bot that you can then install into your Nautobot instance. For more on building your own chat bot, take a look at the [blog post on Creating Custom Chat Commands](http://blog.networktocode.com/post/creating-custom-chat-commands-using-nautobot-chatops/).
+
 ## Why Cookiecutter?
 
-Before we get started, let's provide some context around the terminology used within Cookiecutter.
+Before we get started, let's provide some context around the terminology used within Cookiecutter. What is this Cookiecutter? It is a Python method of creating new projects/files from a templated base. Cookiecutter is an open source command line tool to create projects from a project template. You can learn more on the Cookiecutter [GitHub](https://github.com/cookiecutter/cookiecutter) and [ReadTheDocs](https://cookiecutter.readthedocs.io/en/stable/).
 
 * **cookie** - The Cookiecutter template that provides the framework for specific projects to allow developers to get started developing faster such as the ones defined above.
 * **bake/baking** - The output of a cookie. If a cookie is baked, it means the project was created from a Cookiecutter template.
 
-CookieCutter was choosen as a method as it provides the capability to provide a customized set of data based on a question/answer setup to help get customization in place.
+Cookiecutter was chosen as a method to create projects from a template because it provides the capability to provide a customized project output based on a question/answer setup to help get customization in place.
 
-Check out the [Python CookieCutter documentation](https://cookiecutter.readthedocs.io/en/1.7.2/) for more details of the project.
+Check out the [Python Cookiecutter documentation](https://cookiecutter.readthedocs.io/en/1.7.2/) for more details of the project.
 
 ## Getting Started
 
@@ -17,7 +19,7 @@ Below are the steps outlined in detail for getting started along with various ti
 
 ## Generating a New Nautobot Chatops Plugin
 
-Let's walk you through baking a **nautobot-chatops-plugin** cookie.
+Let's walk you through baking a **nautobot-chatops-plugin** cookie. Below are the settings that will be asked for during the question part.
 
 | Setting                         | Description                                                                                     |
 | ------------------------------- | ----------------------------------------------------------------------------------------------- |
@@ -37,7 +39,7 @@ Let's walk you through baking a **nautobot-chatops-plugin** cookie.
 | **version**                     | Version of the new Nautobot plugin                                                              |
 | **open_source_license**         | Determine if project is open source or not                                                      |
 
-> NOTE: Cookiecutter by default bakes the new cookie within the current working directory. If that is not desirable then use the `-o` option to specify a different output folder.
+> NOTE: Cookiecutter by default bakes the new cookie within the current working directory. If that is not desirable then use the `-o` option to specify a different output directory.
 
 ```bash
 ❯ cookiecutter nautobot-plugin-chatops-cookiecutter
@@ -81,7 +83,7 @@ Follow the directions provided at the end of baking the cookie.
 ➜ cp development/creds.example.env development/creds.env
 ```
 
-Here is an example of what your directory structure may look like (subject to change as the project is developed over time).
+Here is an example of what your directory structure may look like (structure may change over time).
 
 > NOTE: there are hidden files not displayed in the below output.
 
@@ -99,13 +101,13 @@ drwxr-xr-x  7 ntc  staff   224B Aug  3 08:15 nautobot_plugin_chatops_my_plugin
 -rw-r--r--  1 ntc  staff    12K Aug  3 08:15 tasks.py
 ```
 
-Once the cookie is generated the next step is to start developing the plugin! If you're not familiar with the development environment provided by this cookie, we recommend checking out the `GETTING_STARTED.md` located in the root of the newly baked cookie or checkout the generated **README** for a quick start guide.
+Once the cookie is baked the next step is to start developing the plugin! To get familiar with the development environment provided by this cookie, we recommend checking out the `GETTING_STARTED.md` or `README.md` located in the root directory of the newly baked cookie.
 
 ## Automate local dev environment setup with Mattermost
 
-The baked cookie supports the automated setup of a local Mattermost instance to quickly test your chatops plugin. All settings and credentials will be pre-configured, and a separate Docker container will run Mattermost in the background, accessible at http://localhost:8065
+The baked cookie supports the automated setup of a local [Mattermost](https://mattermost.com/) instance to quickly test your chatops plugin. All settings and credentials will be pre-configured, and a separate Docker container will run Mattermost in the background, accessible at http://localhost:8065
 
-To setup this environment, after creating the `creds.env` file and running `poetry lock` run the following invoke commands from the plugin folder, using the optional `-m` or `--mattermost` flags:
+To set up this environment, you must first run `poetry lock` command and have `creds.env` file in place. Then you run the following invoke commands from within the plugin folder, using the -m or --mattermost flag
 
 ```bash
 ➜ poetry shell             # Activate poetry environment
