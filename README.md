@@ -40,9 +40,9 @@ Let's walk you through baking a **nautobot-chatops-plugin** cookie.
 > NOTE: Cookiecutter by default bakes the new cookie within the current working directory. If that is not desirable then use the `-o` option to specify a different output folder.
 
 ```bash
-❯ cookiecutter nautobot-plugin-chatops-cookiecutter
+❯ cookiecutter .
 
-full_name [Nautobot Chatops Plugin]: email [mail@example.com]: 
+full_name [John Doe]: email [mail@example.com]: 
 chatops_interactive_command [my_plugin]: 
 plugin_name [nautobot_plugin_chatops_my_plugin]: 
 verbose_name [Nautobot Plugin Chatops My Plugin]: 
@@ -118,7 +118,7 @@ There is no additional setup needed. After a few seconds, you can test this depl
 
 **Mattermost**
 
-- Go to http://localhost:8065/ntcteam/messages/@ntcbot
+- Go to http://localhost:8065/automationteam/messages/@ntcbot
 - Log in using the default `admin/Nautobot123!!` credentials.
   - These are set in `development/development.env`, and may have been changed.
 - Send a direct message to @nautobot-bot. You should be able to run an example command `/chatops_interactive_command hello-world test`, where "chatops_interactive_command" is what was configured for the last question during cookiecutter template generation.
