@@ -71,8 +71,8 @@ There is no additional setup needed. After a few seconds, you can test this depl
 
 **Mattermost**
 
-- Go to http://localhost:8065/ntcteam/messages/@ntcbot
-- Log in using the default `admin/Ntc01234!!` credentials.
+- Go to http://localhost:8065/automationteam/messages/@ntcbot
+- Log in using the default `admin/Nautobot123!!` credentials.
   - These are set in `development/development.env`, and may have been changed.
 - Send a direct message to @ntcbot. You should be able to run an example command `/{{ cookiecutter.chatops_interactive_command }} hello-world test`
 
