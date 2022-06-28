@@ -46,9 +46,9 @@ TODO
 
 ## Contributing
 
-Pull requests are welcomed and automatically built and tested against multiple version of Python and multiple version of Nautobot through TravisCI.
+The project is packaged with a light development environment based on `docker-compose` to help with the local development of the project and to run the tests.
 
-The project is packaged with a light development environment based on `docker-compose` to help with the local development of the project and to run the tests within TravisCI.
+For more information see [Getting Started](GETTING_STARTED.md) on how to develop within the system.
 
 The project is following Network to Code software development guideline and is leveraging:
 
