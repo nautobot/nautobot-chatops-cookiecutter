@@ -1,5 +1,5 @@
 {
-  "full_name": "Nautobot Chatops Plugin",
+  "full_name": "John Doe",
   "email": "mail@example.com",
   "chatops_interactive_command": "my_plugin",
   "plugin_name": "nautobot_plugin_chatops_{{cookiecutter.chatops_interactive_command}}",
