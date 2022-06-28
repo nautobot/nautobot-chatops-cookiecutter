@@ -321,7 +321,7 @@ def setup_mattermost(context):
             continue
         cmd_result = docker_compose(
             context,
-            f"exec mattermost mmctl command create ntcteam --creator {env['MM_ADMIN_USERNAME']} --title Nautobot"
+            f"exec mattermost mmctl command create automationteam --creator {env['MM_ADMIN_USERNAME']} --title Nautobot"
             f" --trigger-word {mm_command} --url http://nautobot:8080/api/plugins/chatops/mattermost/slash_command/"
             " --post --autocomplete --format json",
             pty=True,
