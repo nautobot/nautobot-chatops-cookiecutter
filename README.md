@@ -109,9 +109,9 @@ To setup this environment, after creating the `creds.env` file and running `poet
 
 ```bash
 ➜ poetry shell             # Activate poetry environment
-➜ invoke build -m          # Build the containers
+➜ invoke build             # Build the containers
 ➜ invoke setup-mattermost  # Setup the Mattermost container and configure all required settings
-➜ invoke start -m          # Start all Nautobot containers
+➜ invoke start             # Start all Nautobot containers
 ```
 
 There is no additional setup needed. After a few seconds, you can test this deployment is working properly as follows:
