@@ -1,10 +1,10 @@
 # nautobot-chatops-cookiecutter
 
- This project is meant to get you started on your way of creating Nautobot ChatOps commands quickly. When running through the cookie cutting template, there are a few questions that will help dynamically create content within the final "baked cookie" project. This will create a new repository that will be the new chat bot that you can then install into your Nautobot instance. For more on building your own chat bot, take a look at the [blog post on Creating Custom Chat Commands](http://blog.networktocode.com/post/creating-custom-chat-commands-using-nautobot-chatops/).
+ This project helps to get you started on your way of creating Nautobot ChatOps commands quickly. When running through the cookie cutting template, there are a few questions that will help dynamically create content within the final "baked cookie" project. This will create a new repository that will be the new chat bot that you can then install into your Nautobot instance. For more on building your own chat bot, take a look at the [blog post on Creating Custom Chat Commands](http://blog.networktocode.com/post/creating-custom-chat-commands-using-nautobot-chatops/).
 
 ## Why Cookiecutter?
 
-Before we get started, let's provide some context around the terminology used within Cookiecutter. What is this Cookiecutter? It is a Python method of creating new projects/files from a templated base. Cookiecutter is an open source command line tool to create projects from a project template. You can learn more on the Cookiecutter [GitHub](https://github.com/cookiecutter/cookiecutter) and [ReadTheDocs](https://cookiecutter.readthedocs.io/en/stable/).
+Before we get started, let's provide some context around the terminology used within Cookiecutter. What is this Cookiecutter? It is a Python method of creating new projects/files from a templated base. Cookiecutter is an open source command-line tool to create projects from a project template. You can learn more on the Cookiecutter [GitHub](https://github.com/cookiecutter/cookiecutter) and [ReadTheDocs](https://cookiecutter.readthedocs.io/en/stable/).
 
 * **cookie** - The Cookiecutter template that provides the framework for specific projects to allow developers to get started developing faster such as the ones defined above.
 * **bake/baking** - The output of a cookie. If a cookie is baked, it means the project was created from a Cookiecutter template.
