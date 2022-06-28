@@ -284,7 +284,6 @@ def post_upgrade(context):
 @task
 def setup_mattermost(context):
     """Setup local Mattermost dev instance for testing ChatOps against."""
-    chatops_cfg_dir = "development"
     env = load_env_dotf(CREDS_ENV_FILE)
     env.update(load_env_dotf(MATTERMOST_ENV_FILE))
 
@@ -327,7 +326,8 @@ def setup_mattermost(context):
             pty=True,
         )
         command_result = json.loads(cmd_result.stdout)
-        with open(f"{chatops_cfg_dir}/{mm_command}_cmd_token.txt", mode="w", encoding="utf-8") as file_out:
+        cmd_token_file = os.path.join(ENV_FILES_DIR, f"{mm_command}_cmd_token.txt")
+        with open(cmd_token_file, mode="w", encoding="utf-8") as file_out:
             file_out.write(command_result["token"])
 
         try:
@@ -356,7 +356,7 @@ def setup_mattermost(context):
     time.sleep(15)
     docker_compose(
         context,
-        f"run nautobot sh /source/{chatops_cfg_dir}/configure_chatops.sh",
+        f"run nautobot sh /source/development/configure_chatops.sh",
         pty=True,
     )
 {%- endif %}
