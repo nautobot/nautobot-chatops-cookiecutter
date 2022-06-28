@@ -17,13 +17,13 @@ if [ ! -e "/mm/mattermost-data/users" ]; then
     echo "-- Adding admin user --"
     mattermost user create --system_admin --email "admin@example.com" --username "admin" --password "Nautobot123!!" &> /dev/null
 	echo "-- Adding ntcbot user --"
-	mattermost user create --system_admin --email "net_auto_bot@exampe.com" --username "net_auto_bot" --password "Nautobot123!!" &> /dev/null
+	mattermost user create --system_admin --email "nautobot-bot@exampe.com" --username "nautobot-bot" --password "Nautobot123!!" &> /dev/null
 	echo "-- Converting user to bot --"
 	mattermost user convert ntcbot --bot
 	echo "-- Creating automationteam team --"
 	mattermost team create --name automationteam --display_name "Automation Team"
 	echo "-- Adding users to automationteam team"
-	mattermost team add automationteam admin net_auto_bot
+	mattermost team add automationteam admin nautobot-bot
 	echo "Starting platform"
 	cd mattermost
 	exec mattermost --config=config/config_docker.json
