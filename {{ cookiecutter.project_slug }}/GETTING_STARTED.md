@@ -4,12 +4,13 @@
   - [Introduction](#introduction)
   - [Poetry](#poetry)
   - [Full Docker Development Environment](#full-docker-development-environment)
-    - [Invoke](#invoke)
-      - [Invoke - Building the Docker Image](#invoke---building-the-docker-image)
-    - [Invoke - Starting the Development Environment](#invoke---starting-the-development-environment)
-    - [Invoke - Creating a Superuser](#invoke---creating-a-superuser)
-    - [Invoke - Stopping the Development Environment](#invoke---stopping-the-development-environment)
-    - [Real-Time Updates? How Cool!](#real-time-updates-how-cool)
+    - [Invoke (Fully Automated) - Local Dev Environment Setup With Mattermost](#invoke-fully-automated---local-dev-environment-setup-with-mattermost)
+    - [Invoke (Manual/Non-Mattermost) - Building the Docker Image](#invoke-manualnon-mattermost---building-the-docker-image)
+    - [Invoke (Manual/Non-Mattermost) - Starting the Development Environment](#invoke-manualnon-mattermost---starting-the-development-environment)
+    - [Invoke (Manual/Non-Mattermost) - Creating a Superuser](#invoke-manualnon-mattermost---creating-a-superuser)
+    - [Invoke (Manual/Non-Mattermost) - Stopping the Development Environment](#invoke-manualnon-mattermost---stopping-the-development-environment)
+    - [Real-Time Updates? How Cool](#real-time-updates-how-cool)
+      - [Adding new chatbot commands](#adding-new-chatbot-commands)
   - [Docker Magic](#docker-magic)
     - [Docker Logs](#docker-logs)
   - [To Rebuild or Not to Rebuild](#to-rebuild-or-not-to-rebuild)
@@ -29,7 +30,7 @@ The cookie provides the ability to develop and manage the Nautobot server locall
 
 The upside to having the Nautobot service handled by Docker rather than locally is that you do not have to manage the Nautobot server and the [Docker logs](#docker-logs) provide the majority information you will need to help troubleshoot while getting started quickly and not requiring you to perform several manual steps to get started and remember to have the Nautobot server running or having it run in a separate terminal while you develop. Ultimately, the decision is yours as to how you want to develop, but it was agreed it would be a good idea to provide pros and cons for each development environment.
 
-> The local environment still uses Docker containers for the supporting services (Postgres, Redis, and RQ Worker), but the Nautobot server is handled locally by you, the developer.
+> The local environment still uses Docker containers for the supporting services (Postgres, Redis, and Celery), but the Nautobot server is handled locally by you, the developer.
 
 Follow the directions below for the specific development environment that you choose.
 
@@ -88,7 +89,7 @@ You can see the Mattermost token and command are already configured.
 
 ### Invoke (Manual/Non-Mattermost) - Building the Docker Image
 
-The first thing you need to do is build the necessary Docker image for Nautobot that installs the specific **nautobot_ver**. The image is used for Nautobot and the RQ worker service used by Docker Compose.
+The first thing you need to do is build the necessary Docker image for Nautobot that installs the specific **nautobot_ver**. The image is used for Nautobot and the worker service used by Docker Compose.
 
 ```bash
 ➜ invoke build
@@ -131,7 +132,7 @@ This will start all of the Docker containers used for hosting Nautobot. Once the
 ```bash
 ➜ docker ps
 ****CONTAINER ID   IMAGE                            COMMAND                  CREATED          STATUS          PORTS                                       NAMES
-ee90fbfabd77   {{ cookiecutter.plugin_slug }}/nautobot:{{ cookiecutter.nautobot_version }}-py3.7   "nautobot-server rqw…"   16 seconds ago   Up 13 seconds                                               {{ cookiecutter.plugin_name }}_worker_1
+ee90fbfabd77   {{ cookiecutter.plugin_slug }}/nautobot:{{ cookiecutter.nautobot_version }}-py3.7   "nautobot-server cel…"   16 seconds ago   Up 13 seconds                                               {{ cookiecutter.plugin_name }}_worker_1
 b8adb781d013   {{ cookiecutter.plugin_slug }}/nautobot:{{ cookiecutter.nautobot_version }}-py3.7   "/docker-entrypoint.…"   20 seconds ago   Up 15 seconds   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   {{ cookiecutter.plugin_name }}_nautobot_1
 d64ebd60675d   {{ cookiecutter.plugin_slug }}/nautobot:{{ cookiecutter.nautobot_version }}-py3.7   "mkdocs serve -v -a …"   25 seconds ago   Up 18 seconds   0.0.0.0:8001->8080/tcp, :::8001->8080/tcp   {{ cookiecutter.plugin_name }}_docs_1
 e72d63129b36   postgres:13-alpine               "docker-entrypoint.s…"   25 seconds ago   Up 19 seconds   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   {{ cookiecutter.plugin_name }}_postgres_1
@@ -356,7 +357,7 @@ This is the same as running:
 
 ### Tests
 
-To run tests against your code, you can run all of the tests that TravisCI runs against any new PR with:
+To run tests against your code, you can run all of the tests that in CI runs against any new PR with:
 
 ```bash
 ➜ invoke tests
@@ -372,3 +373,5 @@ To run an individual test, you can run any or all of the following:
 ➜ invoke pydocstyle
 ➜ invoke pylint
 ```
+
+[Home](README.md)
