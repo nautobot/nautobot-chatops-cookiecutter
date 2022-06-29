@@ -1,4 +1,4 @@
-# nautobot-chatops-cookiecutter
+# Nautobot ChatOps Cookiecutter
 
  This project helps to get you started on your way of creating Nautobot ChatOps commands quickly. When running through the cookie cutting template, there are a few questions that will help dynamically create content within the final "baked cookie" project. This will create a new repository that will be the new chat bot that you can then install into your Nautobot instance. For more on building your own chat bot, take a look at the [blog post on Creating Custom Chat Commands](http://blog.networktocode.com/post/creating-custom-chat-commands-using-nautobot-chatops/).
 
