@@ -21,23 +21,24 @@ Below are the steps outlined in detail for getting started along with various ti
 
 Let's walk you through baking a **nautobot-chatops-plugin** cookie. Below are the settings that will be asked for during the question part.
 
-| Setting                         | Description                                                                                     |
-| ------------------------------- | ----------------------------------------------------------------------------------------------- |
-| **full_name**                   | Used in the **author** field within `pyproject.toml` and `PluginConfig`                         |
-| **email**                       | Used in the **author** field within `pyproject.toml`                                            |
-| **chatops_interactive_command** | Slash command used to interact with Bot in chat client                                          |
-| **plugin_name**                 | The Python name of the plugin                                                                   |
-| **verbose_name**                | Used in `PluginConfig`                                                                          |
-| **plugin_slug**                 | Python packaging name                                                                           |
-| **project_slug**                | Slug for the project                                                                            |
-| **base_url**                    | Defines plugin's base url used in Nautobot                                                      |
-| **min_nautobot_version**        | The minimum supported Nautobot version                                                          |
-| **max_nautobot_version**        | The maximum supported Nautobot version                                                          |
-| **nautobot_version**            | Used for development purposes to decide with Nautobot-dev Docker image to use for development   |
-| **camel_name**                  | Used to define the plugin's subclassing of `PluginConfig`, e.g. `MyPluginConfig(PluginConfig):` |
-| **project_short_description**   | Used in the **description** field within `PluginConfig`                                         |
-| **version**                     | Version of the new Nautobot plugin                                                              |
-| **open_source_license**         | Determine if project is open source or not                                                      |
+| Setting                             | Description                                                                                     |
+| ----------------------------------- | ----------------------------------------------------------------------------------------------- |
+| **full_name**                       | Used in the **author** field within `pyproject.toml` and `PluginConfig`                         |
+| **email**                           | Used in the **author** field within `pyproject.toml`                                            |
+| **chatops_interactive_command**     | Slash command used to interact with Bot in chat client                                          |
+| **plugin_name**                     | The Python name of the plugin                                                                   |
+| **verbose_name**                    | Used in `PluginConfig`                                                                          |
+| **plugin_slug**                     | Python packaging name                                                                           |
+| **project_slug**                    | Slug for the project                                                                            |
+| **base_url**                        | Defines plugin's base url used in Nautobot                                                      |
+| **min_nautobot_version**            | The minimum supported Nautobot version                                                          |
+| **max_nautobot_version**            | The maximum supported Nautobot version                                                          |
+| **nautobot_version**                | Used for development purposes to decide with Nautobot-dev Docker image to use for development   |
+| **camel_name**                      | Used to define the plugin's subclassing of `PluginConfig`, e.g. `MyPluginConfig(PluginConfig):` |
+| **project_short_description**       | Used in the **description** field within `PluginConfig`                                         |
+| **version**                         | Version of the new Nautobot plugin                                                              |
+| **open_source_license**             | Determine if project is open source or not                                                      |
+| **setup_local_mattermost_dev_env ** | Setup Local mattermost development environment flag                                             |
 
 > NOTE: Cookiecutter by default bakes the new cookie within the current working directory. If that is not desirable then use the `-o` option to specify a different output directory.
 
@@ -107,13 +108,13 @@ Once the cookie is baked the next step is to start developing the plugin! To get
 
 The baked cookie supports the automated setup of a local [Mattermost](https://mattermost.com/) instance to quickly test your chatops plugin. All settings and credentials will be pre-configured, and a separate Docker container will run Mattermost in the background, accessible at http://localhost:8065
 
-To set up this environment, you must first run `poetry lock` command and have `creds.env` file in place. Then you run the following invoke commands from within the plugin folder, using the -m or --mattermost flag
+To set up this environment, you must first run `poetry lock` command and have `creds.env` file in place. Then you run the following invoke commands from within the plugin folder.
 
 ```bash
 ➜ poetry shell             # Activate poetry environment
-➜ invoke build -m          # Build the containers
+➜ invoke build             # Build the containers
 ➜ invoke setup-mattermost  # Setup the Mattermost container and configure all required settings
-➜ invoke start -m          # Start all Nautobot containers
+➜ invoke start             # Start all Nautobot containers
 ```
 
 There is no additional setup needed. After a few seconds, you can test this deployment is working properly as follows:
