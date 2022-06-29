@@ -38,7 +38,7 @@ Let's walk you through baking a **nautobot-chatops-plugin** cookie. Below are th
 | **project_short_description**       | Used in the **description** field within `PluginConfig`                                         |
 | **version**                         | Version of the new Nautobot plugin                                                              |
 | **open_source_license**             | Determine if project is open source or not                                                      |
-| **setup_local_mattermost_dev_env ** | Setup Local mattermost development environment flag                                             |
+| **setup_local_mattermost_dev_env**  | Setup Local mattermost development environment flag                                             |
 
 > NOTE: Cookiecutter by default bakes the new cookie within the current working directory. If that is not desirable then use the `-o` option to specify a different output directory.
 
@@ -106,7 +106,7 @@ Once the cookie is baked the next step is to start developing the plugin! To get
 
 ## Automate local dev environment setup with Mattermost
 
-The baked cookie supports the automated setup of a local [Mattermost](https://mattermost.com/) instance to quickly test your chatops plugin. All settings and credentials will be pre-configured, and a separate Docker container will run Mattermost in the background, accessible at http://localhost:8065
+The baked cookie supports the automated setup of a local [Mattermost](https://mattermost.com/) instance to quickly test your chatops plugin. All settings and credentials will be pre-configured, and a separate Docker container will run Mattermost in the background, accessible at http://localhost:8065. Be sure to answer yes to the question about setup_local_mattermost_dev_env.
 
 To set up this environment, you must first run `poetry lock` command and have `creds.env` file in place. Then you run the following invoke commands from within the plugin folder.
 
