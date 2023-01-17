@@ -1,7 +1,7 @@
 ARG MYSQL_VER=5.7
 FROM mysql:${MYSQL_VER}
 
-RUN apt-get update && apt-get install -y ca-certificates
+RUN yum -y update && yum install -y ca-certificates
 
 #
 # Configure SQL
