@@ -1,13 +1,14 @@
 # Nautobot ChatOps Cookiecutter
 
- This project helps to get you started on your way of creating Nautobot ChatOps commands quickly. When running through the cookie cutting template, there are a few questions that will help dynamically create content within the final "baked cookie" project. This will create a new repository that will be the new chat bot that you can then install into your Nautobot instance. For more on building your own chat bot, take a look at the [blog post on Creating Custom Chat Commands](http://blog.networktocode.com/post/creating-custom-chat-commands-using-nautobot-chatops/).
+## Introduction
 
-## Why Cookiecutter?
+This project helps to get you started on your way of creating Nautobot ChatOps commands quickly. When running through the cookie cutting template, there are a few questions that will help dynamically create content within the final "baked cookie" project. This will create a new repository that will be the new chat bot that you can then install into your Nautobot instance. For more on building your own chat bot, take a look at the [blog post on Creating Custom Chat Commands](http://blog.networktocode.com/post/creating-custom-chat-commands-using-nautobot-chatops/).
 
-Before we get started, let's provide some context around the terminology used within Cookiecutter. What is this Cookiecutter? It is a Python method of creating new projects/files from a templated base. Cookiecutter is an open source command-line tool to create projects from a project template. You can learn more on the Cookiecutter [GitHub](https://github.com/cookiecutter/cookiecutter) and [ReadTheDocs](https://cookiecutter.readthedocs.io/en/stable/).
+### IMPORTANT Cookie Notes
 
-* **cookie** - The Cookiecutter template that provides the framework for specific projects to allow developers to get started developing faster such as the ones defined above.
-* **bake/baking** - The output of a cookie. If a cookie is baked, it means the project was created from a Cookiecutter template.
+- The logo of the project is a placeholder (`docs/images/icon-{{cookiecutter.plugin_slug}}.png`) - please replace it with your app icon, making sure it's at least 200x200px and has a transparent background!
+- Please resolve and remove **all** of the comments and blocks marked with `Developer Note - Remove Me!` prior to publishing. Catch'em all with `rgrep "Developer Note" plugin-root`.
+- The documentation website will be built and hosted on `readthedocs.io` for open source projects and is documented as part of the process.
 
 Cookiecutter was chosen as a method to create projects from a template because it provides the capability to provide a customized project output based on a question/answer setup to help get customization in place.
 
@@ -21,57 +22,71 @@ Below are the steps outlined in detail for getting started along with various ti
 
 Let's walk you through baking a **nautobot-chatops-plugin** cookie. Below are the settings that will be asked for during the question part.
 
-| Setting                             | Description                                                                                     |
-| ----------------------------------- | ----------------------------------------------------------------------------------------------- |
-| **full_name**                       | Used in the **author** field within `pyproject.toml` and `PluginConfig`                         |
-| **email**                           | Used in the **author** field within `pyproject.toml`                                            |
+> NOTE: It is recommended to leave these first 4 options as default:
+
+| Setting | Description |
+|-------- | ----------- |
+| **codeowner_github_usernames** | The Github codeowners for the new plugin |
+| **full_name** | Used in the **author** field within `pyproject.toml` and `PluginConfig` |
+| **email** | Used in the **author** field within `pyproject.toml` |
+| **github_org** | Used to construct **repo_url** |
 | **chatops_interactive_command**     | Slash command used to interact with Bot in chat client                                          |
-| **plugin_name**                     | The Python name of the plugin                                                                   |
-| **verbose_name**                    | Used in `PluginConfig`                                                                          |
-| **plugin_slug**                     | Python packaging name                                                                           |
-| **project_slug**                    | Slug for the project                                                                            |
-| **base_url**                        | Defines plugin's base url used in Nautobot                                                      |
-| **min_nautobot_version**            | The minimum supported Nautobot version                                                          |
-| **max_nautobot_version**            | The maximum supported Nautobot version                                                          |
-| **nautobot_version**                | Used for development purposes to decide with Nautobot-dev Docker image to use for development   |
-| **camel_name**                      | Used to define the plugin's subclassing of `PluginConfig`, e.g. `MyPluginConfig(PluginConfig):` |
-| **project_short_description**       | Used in the **description** field within `PluginConfig`                                         |
-| **version**                         | Version of the new Nautobot plugin                                                              |
-| **open_source_license**             | Determine if project is open source or not                                                      |
+| **plugin_name** | The Python name of the plugin |
+| **verbose_name** | Used in `PluginConfig` |
+| **plugin_slug** | Python packaging name |
+| **project_slug** | Used to construct **repo_url** |
+| **base_url** | Defines plugin's base url used in Nautobot |
+| **min_nautobot_version** | The minimum supported Nautobot version |
+| **max_nautobot_version** | The maximum supported Nautobot version |
+| **nautobot_version** | Used for development purposes to decide with Nautobot-dev Docker image to use for development |
+| **camel_name** | Used to define the plugin's subclassing of `PluginConfig`, e.g. `MyPluginConfig(PluginConfig):` |
+| **project_short_description** | Used in the **description** field within `PluginConfig` |
+| **version** | Version of the new Nautobot plugin |
+| **Select open_source_license** | Determine if project is open source or not |
+| **docs_base_url**| The main URL where the project documentation will be hosted. For open source projects use the default (`https://docs.nautobot.com`). |
+| **docs_app_url**| The full URL for documentation hosting. You might want to shorten the project alias, for example `https://docs.nautobot.com/projects/chatops-my-plugin/en/latest` instead of `https://docs.nautobot.com/projects/nautobot-plugin-data-validation/en/latest`. Make sure there's no trailing `/`! |
 | **setup_local_mattermost_dev_env**  | Setup Local mattermost development environment flag                                             |
 
-> NOTE: Cookiecutter by default bakes the new cookie within the current working directory. If that is not desirable then use the `-o` option to specify a different output directory.
+> NOTE: Cookiecutter by default bakes the new cookie within the current working directory. If that is not desirable then use the `-o` option to specify a different output folder.
 
 ```bash
 ❯ cookiecutter .
 
-full_name [John Doe]: email [mail@example.com]: 
+codeowner_github_usernames [@smith-ntc]:
+full_name [Network to Code, LLC]:
+email [info@networktocode.com]:
+github_org [nautobot]:
 chatops_interactive_command [my_plugin]: 
 plugin_name [nautobot_plugin_chatops_my_plugin]: 
 verbose_name [Nautobot Plugin Chatops My Plugin]: 
 plugin_slug [nautobot-plugin-chatops-my-plugin]: 
 project_slug [nautobot-plugin-chatops-my-plugin]: 
-min_nautobot_version [1.2.0]: 
-max_nautobot_version [1.9999]: 
-nautobot_version [latest]: 
+repo_url [https://github.com/nautobot/nautobot-plugin-chatops-my-plugin]:
+base_url [chatops-my-plugin]:
+min_nautobot_version [1.5.2]:
+max_nautobot_version [1.9999]:
+nautobot_version [latest]:
 camel_name [NautobotPluginChatopsMyPlugin]: 
 project_short_description [Nautobot Plugin Chatops My Plugin]: 
-version [0.1.0]: 
+version [0.1.0]:
 Select open_source_license:
 1 - Apache-2.0
 2 - Not open source
-Choose from 1, 2 [1]: 
+Choose from 1, 2 [1]:
+docs_base_url [https://docs.nautobot.com]:
+docs_app_url [https://docs.nautobot.com/projects/chatops-my-plugin/en/latest]: https://docs.nautobot.com/projects/chatops-my-plugin/en/latest
 Select setup_local_mattermost_dev_env:
 1 - Yes
 2 - No
 Choose from 1, 2 [1]: 
 
-Congratulations!  Your cookie has now been baked.
+Congratulations!  Your cookie has now been baked. It is located at /vagrant/nautobot-plugin-chatops-my-plugin.
 
 ⚠️⚠️ Before you start using your cookie you must run the following commands inside your cookie:
 
-* cp development/creds.example.env development/creds.env
 * poetry lock
+* cp development/creds.example.env development/creds.env
+* invoke makemigrations
 
 creds.env will be ignored by git and can be used to override default environment variables.
 ```
@@ -82,27 +97,35 @@ Follow the directions provided at the end of baking the cookie.
 ➜ cd nautobot-plugin-chatops-my-plugin
 ➜ poetry lock
 ➜ cp development/creds.example.env development/creds.env
+➜ invoke makemigrations
 ```
 
-Here is an example of what your directory structure may look like (structure may change over time).
-
-> NOTE: there are hidden files not displayed in the below output.
+Here is an example of what your directory structure may look like (subject to change as the project is developed over time).
 
 ```bash
 ➜ ll nautobot-plugin-chatops-my-plugin
-total 104
--rw-r--r--  1 ntc  staff    29B Aug  3 08:15 FAQ.md
--rw-r--r--  1 ntc  staff    16K Aug  3 08:15 GETTING_STARTED.md
--rw-r--r--  1 ntc  staff   591B Aug  3 08:15 LICENSE
--rw-r--r--  1 ntc  staff   7.1K Aug  3 08:15 README.md
-drwxr-xr-x  9 ntc  staff   288B Aug  3 08:15 development
--rw-r--r--  1 ntc  staff   300B Aug  3 08:15 invoke.example.yml
+total 96K
+drwxrwxr-x 1 vagrant vagrant 4.0K Oct 24 15:30 ./
+drwxrwxr-x 1 vagrant vagrant 4.0K Oct 24 15:30 ../
+-rw-rw-r-- 1 vagrant vagrant  118 Oct 24 15:30 .bandit.yml
+-rw-rw-r-- 1 vagrant vagrant  295 Oct 24 15:30 .dockerignore
+-rw-rw-r-- 1 vagrant vagrant  192 Oct 24 15:30 .flake8
+drwxrwxr-x 1 vagrant vagrant 4.0K Oct 24 15:30 .github/
+-rw-rw-r-- 1 vagrant vagrant 4.9K Oct 24 15:30 .gitignore
+-rw-rw-r-- 1 vagrant vagrant  451 Oct 24 15:30 .readthedocs.yaml
+-rw-rw-r-- 1 vagrant vagrant  214 Oct 24 15:30 .yamllint.yml
+-rw-rw-r-- 1 vagrant vagrant  591 Oct 24 15:30 LICENSE
+-rw-rw-r-- 1 vagrant vagrant 5.0K Oct 24 15:30 README.md
+drwxrwxr-x 1 vagrant vagrant 4.0K Oct 24 15:30 development/
+drwxrwxr-x 1 vagrant vagrant 4.0K Oct 24 15:30 docs/
+-rw-rw-r-- 1 vagrant vagrant  325 Oct 24 15:30 invoke.example.yml
+-rw-rw-r-- 1 vagrant vagrant  322 Oct 24 15:30 invoke.mysql.yml
+-rw-rw-r-- 1 vagrant vagrant 3.8K Oct 24 15:30 mkdocs.yml
 drwxr-xr-x  7 ntc  staff   224B Aug  3 08:15 nautobot_plugin_chatops_my_plugin
--rw-r--r--  1 ntc  staff   2.3K Aug  3 08:15 pyproject.toml
--rw-r--r--  1 ntc  staff    12K Aug  3 08:15 tasks.py
-```
+-rw-rw-r-- 1 vagrant vagrant 3.3K Oct 24 15:30 pyproject.toml
+-rw-rw-r-- 1 vagrant vagrant  14K Oct 24 15:30 tasks.py
 
-Once the cookie is baked the next step is to start developing the plugin! To get familiar with the development environment provided by this cookie, we recommend checking out the `GETTING_STARTED.md` or `README.md` located in the root directory of the newly baked cookie.
+Once the cookie is generated the next step is to start developing the plugin! If you're not familiar with the development environment provided by this cookie, we recommend checking out the Development Environment guide located in the documentation tree at `docs/dev/dev_environment.md`.
 
 ## Automate local dev environment setup with Mattermost
 
