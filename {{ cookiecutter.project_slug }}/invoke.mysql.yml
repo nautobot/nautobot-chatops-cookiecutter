@@ -8,8 +8,5 @@
   compose_files:
     - "docker-compose.base.yml"
     - "docker-compose.redis.yml"
-    - "docker-compose.postgres.yml"
+    - "docker-compose.mysql.yml"
     - "docker-compose.dev.yml"
-    {% if cookiecutter.setup_local_mattermost_dev_env == "Yes" -%}
-    - "docker-compose.mattermost-dev.yml"
-    {%- endif %}
