@@ -19,6 +19,7 @@ class {{cookiecutter.camel_name}}Config(PluginConfig):
     version = __version__
     author = "{{cookiecutter.full_name}}"
     description = "{{cookiecutter.project_short_description}}."
+    base_url = "{{cookiecutter.base_url}}"
     required_settings = []
     min_version = "{{cookiecutter.min_nautobot_version}}"
     max_version = "{{cookiecutter.max_nautobot_version}}"
