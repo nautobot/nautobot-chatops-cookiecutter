@@ -1,168 +1,66 @@
 # {{cookiecutter.verbose_name}}
 
-A plugin for [Nautobot](https://github.com/nautobot/nautobot).
+<!--
+Developer Note - Remove Me!
 
-## Installation
+The README will have certain links/images broken until the PR is merged into `develop`. Update the GitHub links with whichever branch you're using (main etc.) if different.
 
-The plugin is available as a Python package in pypi and can be installed with pip
+The logo of the project is a placeholder (docs/images/icon-{{cookiecutter.plugin_slug}}.png) - please replace it with your app icon, making sure it's at least 200x200px and has a transparent background!
 
-```shell
-pip install {{cookiecutter.plugin_slug}}
-```
+To avoid extra work and temporary links, make sure that publishing docs (or merging a PR) is done at the same time as setting up the docs site on RTD, then test everything.
+-->
 
-> The plugin is compatible with Nautobot {{cookiecutter.min_nautobot_version}} and higher
+<p align="center">
+  <img src="https://raw.githubusercontent.com/{{cookiecutter.github_org}}/{{cookiecutter.project_slug}}/develop/docs/images/icon-{{cookiecutter.plugin_slug}}.png" class="logo" height="200px">
+  <br>
+  <a href="{{cookiecutter.repo_url}}/actions"><img src="{{cookiecutter.repo_url}}/actions/workflows/ci.yml/badge.svg?branch=main"></a>
+  <a href="{{cookiecutter.docs_app_url}}"><img src="https://readthedocs.org/projects/{{cookiecutter.project_slug}}/badge/"></a>
+  <a href="https://pypi.org/project/{{cookiecutter.plugin_slug}}/"><img src="https://img.shields.io/pypi/v/{{cookiecutter.plugin_slug}}"></a>
+  <a href="https://pypi.org/project/{{cookiecutter.plugin_slug}}/"><img src="https://img.shields.io/pypi/dm/{{cookiecutter.plugin_slug}}"></a>
+  <br>
+  An <a href="https://www.networktocode.com/nautobot/apps/">App</a> for <a href="https://nautobot.com/">Nautobot</a>.
+</p>
 
-To ensure {{cookiecutter.verbose_name}} is automatically re-installed during future upgrades, create a file named `local_requirements.txt` (if not already existing) in the Nautobot root directory (alongside `requirements.txt`) and list the `{{cookiecutter.plugin_slug}}` package:
+## Overview
 
-```no-highlight
-# echo {{cookiecutter.plugin_slug}} >> local_requirements.txt
-```
+> Developer Note: Add a long (2-3 paragraphs) description of what the App does, what problems it solves, what functionality it adds to Nautobot, what external systems it works with etc.
 
-Once installed, the plugin needs to be enabled in your `nautobot_config.py`
+### Screenshots
 
-```python
-# In your nautobot_config.py
-PLUGINS = ["nautobot_chatops", "{{cookiecutter.plugin_name}}"]
+> Developer Note: Add any representative screenshots of the App in action. These images should also be added to the `docs/user/app_use_cases.md` section.
 
-PLUGINS_CONFIG = {
-  "nautobot_chatops": {
-    # ADD SLACK/MS-TEAMS/WEBEX-TEAMS/MATTERMOST SETTINGS HERE
-  }
-  "{{cookiecutter.plugin_name}}": {
-    # ADD YOUR SETTINGS HERE
-  }
-}
-```
+> Developer Note: Place the files in the `docs/images/` folder and link them using only full URLs from GitHub, for example: `![Overview](https://raw.githubusercontent.com/{{ cookiecutter.github_org }}/{{ cookiecutter.project_slug }}/develop/docs/images/plugin-overview.png)`. This absolute static linking is required to ensure the README renders properly in GitHub, the docs site, and any other external sites like PyPI.
 
-The plugin behavior can be controlled with the following list of settings
+More screenshots can be found in the [Using the App]({{cookiecutter.docs_app_url}}/user/app_use_cases/) page in the documentation. Here's a quick overview of some of the plugin's added functionality:
 
-- TODO
+![](https://raw.githubusercontent.com/{{cookiecutter.github_org}}/{{cookiecutter.project_slug}}/develop/docs/images/placeholder.png)
 
-## Usage
+## Try it out!
 
-### API
+> Developer Note: Only keep this section if appropriate. Update link to correct sandbox.
 
-TODO
+This App is installed in the Nautobot Community Sandbox found over at [demo.nautobot.com](https://demo.nautobot.com/)!
 
-## Contributing
+> For a full list of all the available always-on sandbox environments, head over to the main page on [networktocode.com](https://www.networktocode.com/nautobot/sandbox-environments/).
 
-The project is packaged with a light development environment based on `docker-compose` to help with the local development of the project and to run the tests.
+## Documentation
 
-For more information see [Getting Started](GETTING_STARTED.md) on how to develop within the system.
+Full documentation for this App can be found over on the [Nautobot Docs]({{cookiecutter.docs_base_url}}) website:
 
-The project is following Network to Code software development guideline and is leveraging:
+- [User Guide]({{cookiecutter.docs_app_url}}/user/app_overview/) - Overview, Using the App, Getting Started.
+- [Administrator Guide]({{cookiecutter.docs_app_url}}/admin/install/) - How to Install, Configure, Upgrade, or Uninstall the App.
+- [Developer Guide]({{cookiecutter.docs_app_url}}/dev/contributing/) - Extending the App, Code Reference, Contribution Guide.
+- [Release Notes / Changelog]({{cookiecutter.docs_app_url}}/admin/release_notes/).
+- [Frequently Asked Questions]({{cookiecutter.docs_app_url}}/user/faq/).
 
-- Black, Pylint, Bandit and pydocstyle for Python linting and formatting.
-- Django unit test to ensure the plugin is working properly.
+### Contributing to the Documentation
 
-### Development Environment
+You can find all the Markdown source for the App documentation under the [`docs`]({{cookiecutter.repo_url}}/tree/develop/docs) folder in this repository. For simple edits, a Markdown capable editor is sufficient: clone the repository and edit away.
 
-The development environment can be used in 2 ways. First, with a local poetry environment if you wish to develop outside of Docker. Second, inside of a docker container.
+If you need to view the fully-generated documentation site, you can build it with [MkDocs](https://www.mkdocs.org/). A container hosting the documentation can be started using the `invoke` commands (details in the [Development Environment Guide]({{cookiecutter.docs_app_url}}/dev/dev_environment/#docker-development-environment)) on [http://localhost:8001](http://localhost:8001). Using this container, as your changes to the documentation are saved, they will be automatically rebuilt and any pages currently being viewed will be reloaded in your browser.
 
-#### Invoke tasks
-
-The [PyInvoke](http://www.pyinvoke.org/) library is used to provide some helper commands based on the environment.  There are a few configuration parameters which can be passed to PyInvoke to override the default configuration:
-
-* `nautobot_ver`: the version of Nautobot to use as a base for any built docker containers (default: {{cookiecutter.nautobot_version}})
-* `project_name`: the default docker compose project name (default: {{cookiecutter.plugin_slug}})
-* `python_ver`: the version of Python to use as a base for any built docker containers (default: 3.7)
-* `local`: a boolean flag indicating if invoke tasks should be run on the host or inside the docker containers (default: False, commands will be run in docker containers)
-* `compose_dir`: the full path to a directory containing the project compose files
-* `compose_files`: a list of compose files applied in order (see [Multiple Compose files](https://docs.docker.com/compose/extends/#multiple-compose-files) for more information)
-
-Using PyInvoke these configuration options can be overridden using [several methods](http://docs.pyinvoke.org/en/stable/concepts/configuration.html).  Perhaps the simplest is simply setting an environment variable `INVOKE_{{cookiecutter.plugin_slug.upper()}}_VARIABLE_NAME` where `VARIABLE_NAME` is the variable you are trying to override.  The only exception is `compose_files`, because it is a list it must be overridden in a yaml file.  There is an example `invoke.yml` in this directory which can be used as a starting point.
-
-#### Local Poetry Development Environment
-
-1.  Copy `development/creds.example.env` to `development/creds.env` (This file will be ignored by git and docker)
-2.  Uncomment the `POSTGRES_HOST`, `REDIS_HOST`, and `NAUTOBOT_ROOT` variables in `development/creds.env`
-3.  Create an invoke.yml with the following contents at the root of the repo:
-
-```shell
----
-{{cookiecutter.plugin_name}}:
-  local: true
-  compose_files:
-    - "docker-compose.requirements.yml"
-```
-
-3.  Run the following commands:
-
-```shell
-poetry shell
-poetry install
-export $(cat development/dev.env | xargs)
-export $(cat development/creds.env | xargs) 
-```
-
-4.  You can now run nautobot-server commands as you would from the [Nautobot documentation](https://nautobot.readthedocs.io/en/latest/) for example to start the development server:
-
-```shell
-nautobot-server runserver 0.0.0.0:8080 --insecure
-```
-
-Nautobot server can now be accessed at [http://localhost:8080](http://localhost:8080).
-
-#### Docker Development Environment
-
-This project is managed by [Python Poetry](https://python-poetry.org/) and has a few requirements to setup your development environment:
-
-1.  Install Poetry, see the [Poetry Documentation](https://python-poetry.org/docs/#installation) for your operating system.
-2.  Install Docker, see the [Docker documentation](https://docs.docker.com/get-docker/) for your operating system.
-
-Once you have Poetry and Docker installed you can run the following commands to install all other development dependencies in an isolated python virtual environment:
-
-```shell
-poetry shell
-poetry install
-invoke start
-```
-
-Nautobot server can now be accessed at [http://localhost:8080](http://localhost:8080).
-
-### CLI Helper Commands
-
-The project is coming with a CLI helper based on [invoke](http://www.pyinvoke.org/) to help setup the development environment. The commands are listed below in 3 categories `dev environment`, `utility` and `testing`. 
-
-Each command can be executed with `invoke <command>`. Environment variables `INVOKE_{{cookiecutter.plugin_slug.upper()}}_PYTHON_VER` and `INVOKE_{{cookiecutter.plugin_slug.upper()}}_NAUTOBOT_VER` may be specified to override the default versions. Each command also has its own help `invoke <command> --help`
-
-#### Docker dev environment
-
-```no-highlight
-  build            Build all docker images.
-  debug            Start Nautobot and its dependencies in debug mode.
-  destroy          Destroy all containers and volumes.
-  restart          Restart Nautobot and its dependencies.
-  start            Start Nautobot and its dependencies in detached mode.
-  stop             Stop Nautobot and its dependencies.
-```
-
-#### Utility
-
-```no-highlight
-  cli              Launch a bash shell inside the running Nautobot container.
-  create-user      Create a new user in django (default: admin), will prompt for password.
-  makemigrations   Run Make Migration in Django.
-  nbshell          Launch a nbshell session.
-```
-
-#### Testing
-
-```no-highlight
-  bandit           Run bandit to validate basic static code security analysis.
-  black            Run black to check that Python files adhere to its style standards.
-  flake8           This will run flake8 for the specified name and Python version.
-  pydocstyle       Run pydocstyle to validate docstring formatting adheres to NTC defined standards.
-  pylint           Run pylint code analysis.
-  tests            Run all tests for this plugin.
-  unittest         Run Django unit tests for the plugin.
-```
+Any PRs with fixes or improvements are very welcome!
 
 ## Questions
 
-For any questions or comments, please check the [FAQ](FAQ.md) first and feel free to swing by the [Network to Code slack channel](https://networktocode.slack.com/) (channel #networktocode).
-Sign up [here](http://slack.networktocode.com/)
-
-## Screenshots
-
-TODO
+For any questions or comments, please check the [FAQ]({{cookiecutter.docs_app_url}}/user/faq/) first. Feel free to also swing by the [Network to Code Slack](https://networktocode.slack.com/) (channel `#nautobot`), sign up [here](http://slack.networktocode.com/) if you don't have an account.
