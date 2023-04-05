@@ -1,3 +1,5 @@
+import os
+
 import pytest
 import py
 
@@ -24,7 +26,7 @@ def init_examples_project(project_name):
 
 
 # def test_bake_project_no_license(cookies):
-#     result = cookies.bake(extra_context={'open_source_license': "Not open source or other"})
+#     result = cookies.bake(extra_context={'open_source_license': "Not open source"})
 
 #     assert result.exit_code == 0
 #     assert result.exception is None
@@ -37,9 +39,9 @@ def init_examples_project(project_name):
 
 
 @pytest.fixture
-def cookies_baked_nautobot_chatops_plugin(cookies):
-    """Sets up an example cookiecutter project.
-
+def cookies_baked_nautobot_plugin(cookies):
+    """
+    Sets up an example cookiecutter project
     Args:
         cookies: wrapper for cookiecutter API when generating project
     Return:
@@ -48,23 +50,33 @@ def cookies_baked_nautobot_chatops_plugin(cookies):
     """
     examples_projects = {}
     results = {}
-    plugin_slug = f"nautobot-plugin-chatops-my-plugin"
-    results[plugin_slug] = cookies.bake(
-        extra_context={
-            "open_source_license": "Not open source",
-        }
-    )
+    extra_context = {
+        "nautobot-plugin": {
+                "open_source_license": "Not open source",
+                "plugin_name": "nautobot_plugin",
+            },
+        "my-plugin": {
+                "open_source_license": "Apache-2.0",
+                "plugin_name": "my_plugin",
+            },
+    }
+    os.environ['COOKIECUTTER_CONFIG'] = str(cookies._config_file)
+    for plugin_slug in ["nautobot-plugin", "my-plugin"]:
+        results[plugin_slug] = cookies.bake(
+            extra_context=extra_context[plugin_slug]
+        )
 
-    assert results[plugin_slug].exception is None
+        assert results[plugin_slug].exception is None
 
-    examples_projects[plugin_slug] = init_examples_project(
-        results[plugin_slug].project.basename
-    )
-    results[plugin_slug].project.move(examples_projects[plugin_slug])
+        examples_projects[plugin_slug] = init_examples_project(
+            results[plugin_slug].project.basename
+        )
+        results[plugin_slug].project.move(examples_projects[plugin_slug])
     return results, examples_projects
 
 
 def test_bake_project(cookies):
+    os.environ['COOKIECUTTER_CONFIG'] = str(cookies._config_file)
     result = cookies.bake()
 
     assert result.exit_code == 0
@@ -72,8 +84,9 @@ def test_bake_project(cookies):
     assert result.project.isdir()
 
     found_toplevel_files = [f.basename for f in result.project.listdir()]
-    # assert "pyproject.toml" in found_toplevel_files
-    # assert "README.md" in found_toplevel_files
+    assert "pyproject.toml" in found_toplevel_files
+    assert "README.md" in found_toplevel_files
+    assert "LICENSE" in found_toplevel_files
 
 
 def test_bake_nautobot_execution(cookies_baked_nautobot_chatops_plugin):
