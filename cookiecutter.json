@@ -2,7 +2,7 @@
   "codeowner_github_usernames": "@smith-ntc",
   "full_name": "Network to Code, LLC",
   "email": "info@networktocode.com",
-  "github_org": "snaselj",
+  "github_org": "nautobot",
   "chatops_interactive_command": "my_plugin",
   "plugin_name": "nautobot_plugin_chatops_{{cookiecutter.chatops_interactive_command}}",
   "verbose_name": "{{cookiecutter.plugin_name.title().replace('_', ' ')}}",

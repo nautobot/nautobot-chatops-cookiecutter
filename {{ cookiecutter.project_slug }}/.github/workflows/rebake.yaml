@@ -12,4 +12,4 @@ jobs:
       GITHUB_TOKEN: "${{ '{{ secrets.BAKER_TOKEN }}' }}"
     steps:
       - name: "Rebake"
-        run: "python -m nautobot_plugin_chatops_cookiecutter rebake --push '${{ '{{ github.repositoryUrl }}' }}'"
+        run: "python -m nautobot_templates rebake --push '${{ '{{ github.repositoryUrl }}' }}'"
