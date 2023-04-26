@@ -1,0 +1,15 @@
+---
+name: "Rebake Cookie"
+on:
+  schedule:
+    # every day at 4:00
+    - cron: "0 4 * * *"
+jobs:
+  rebake:
+    runs-on: "ubuntu-latest"
+    container: "ghcr.io/snaselj/nautobot-chatops-cookiecutter/prod:latest"
+    env:
+      GITHUB_TOKEN: "${{ '{{ secrets.BAKER_TOKEN }}' }}"
+    steps:
+      - name: "Rebake"
+        run: "python -m nautobot_plugin_chatops_cookiecutter rebake --push '${{ '{{ github.repositoryUrl }}' }}'"

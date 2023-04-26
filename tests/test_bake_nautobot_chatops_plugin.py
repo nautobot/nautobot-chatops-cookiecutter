@@ -39,7 +39,7 @@ def init_examples_project(project_name):
 
 
 @pytest.fixture
-def cookies_baked_nautobot_plugin(cookies):
+def cookies_baked_nautobot_chatops_plugin(cookies):
     """
     Sets up an example cookiecutter project
     Args:
@@ -94,7 +94,7 @@ def test_bake_nautobot_execution(cookies_baked_nautobot_chatops_plugin):
     Tests creation of example nautobot chatops plugin with the cookiecutter default values
     """
     results, examples_projects = cookies_baked_nautobot_chatops_plugin
-    plugin_slug = f"nautobot-plugin-chatops-my-plugin"
+    plugin_slug = "my-plugin"
     assert results[plugin_slug].exit_code == 0
     assert results[plugin_slug].exception is None
     assert examples_projects[plugin_slug].isdir()

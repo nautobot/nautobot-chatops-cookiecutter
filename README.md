@@ -147,7 +147,7 @@ There is no additional setup needed. After a few seconds, you can test this depl
 - Go to http://localhost:8065/automationteam/messages/@ntcbot
 - Log in using the default `admin/Nautobot123!!` credentials.
   - These are set in `development/development.env`, and may have been changed.
-- Send a direct message to @nautobot-bot. You should be able to run an example command `/chatops_interactive_command hello-world test`, where "chatops_interactive_command" is what was configured for the last question during cookiecutter template generation.
+- Send a direct message to @nautobot-bot. You should be able to run an example command `/chatops_interactive_command my-plugin test`, where "chatops_interactive_command" is what was configured for the last question during cookiecutter template generation.
 
 **Nautobot**
 
@@ -184,4 +184,4 @@ Once the Docker containers are spun up, go to http://localhost:8080 to see the r
 - Channel
 - User
 
-Once completed, open Slack (or whichever chat app client you configured). You should be able to run an example command `/chatops_interactive_command hello-world test`, where "chatops_interactive_command" is what was configured for the last question during cookiecutter template generation.
+Once completed, open Slack (or whichever chat app client you configured). You should be able to run an example command `/chatops_interactive_command my-plugin test`, where "chatops_interactive_command" is what was configured for the last question during cookiecutter template generation.

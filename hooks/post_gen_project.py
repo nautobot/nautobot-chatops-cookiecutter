@@ -1,28 +1,11 @@
-import os
-import shutil
+from collections import OrderedDict
+import json
+from pathlib import Path
 
-from cookiecutter.config import get_user_config
+_PROJECT_PATH = Path.cwd()
 
-PROJECT_DIRECTORY = os.path.realpath(os.path.curdir)
-USER_CONFIG = get_user_config()
-
-
-def remove_file(directory, filepath):
-    """
-    Remove a file from the project directory.
-
-    >>> remove_file('./api/', 'text.txt')
-    # It will delete './api/text.txt' from project dir
-
-    Args:
-        directory (str): base directory path
-        filepath (str): file path within the base directory
-    """
-    os.remove(os.path.join(directory, filepath))
-
-
-CONGRATS = f"""
-Congratulations! Your cookie has now been baked. It is located at {PROJECT_DIRECTORY}.
+_CONGRATS = f"""
+Congratulations! Your cookie has now been baked. It is located at {_PROJECT_PATH}.
 
 ⚠️⚠️ Before you start using your cookie you must run the following commands inside your cookie:
 
@@ -34,28 +17,27 @@ Congratulations! Your cookie has now been baked. It is located at {PROJECT_DIREC
 The file "creds.env will be ignored by git and can be used to override default environment variables.
 """
 
-mattermost_files = [
-    "development/docker-compose.mattermost-dev.yml",
-    "development/configure_chatops.sh",
-    "development/Dockerfile-mattermost",
-    "development/mattermost_config_docker.json",
-    "development/mattermost-docker-entry.sh",
-    "development/mattermost.env",
+_MATTERMOST_FILES = [
+    "docker-compose.mattermost-dev.yml",
+    "configure_chatops.sh",
+    "Dockerfile-mattermost",
+    "mattermost_config_docker.json",
+    "mattermost-docker-entry.sh",
+    "mattermost.env",
 ]
 
 if __name__ == "__main__":
     if "Not open source" == "{{ cookiecutter.open_source_license }}":
-        remove_file(PROJECT_DIRECTORY, "LICENSE")
+        (_PROJECT_PATH / "LICENSE").unlink()
 
-    # Delete Mattermost specific files
     if "No" == "{{ cookiecutter.setup_local_mattermost_dev_env }}":
-        for file in mattermost_files:
-            remove_file(PROJECT_DIRECTORY, file)
+        for file in _MATTERMOST_FILES:
+            (_PROJECT_PATH / "development" / file).unlink()
 
-    # Persist the baked cookie parameters in-repo for future usage as a replay file.
-    shutil.copy(
-        os.path.join(USER_CONFIG["replay_dir"], "nautobot-plugin.json"),
-        f"{PROJECT_DIRECTORY}/.cookiecutter.json",
-    )
+    # Persist the baked cookie parameters in-repo for future rebakes
+    cookie = {{ cookiecutter }}
+    del cookie["_template"]
+    del cookie["_output_dir"]
+    (_PROJECT_PATH / "cookie.json").write_text(json.dumps(cookie, indent=2))
 
-    print(CONGRATS)
+    print(_CONGRATS)
