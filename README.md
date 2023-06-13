@@ -80,7 +80,8 @@ Select setup_local_mattermost_dev_env:
 2 - No
 Choose from 1, 2 [1]: 
 
-Congratulations!  Your cookie has now been baked. It is located at /vagrant/nautobot-plugin-chatops-my-plugin.
+Congratulations!  Your cookie has now been baked. It is located at the following path:
+/vagrant/nautobot-plugin-chatops-my-plugin.
 
 ⚠️⚠️ Before you start using your cookie you must run the following commands inside your cookie:
 
