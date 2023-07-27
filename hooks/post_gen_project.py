@@ -39,6 +39,6 @@ if __name__ == "__main__":
     cookie = {{ cookiecutter }}
     del cookie["_template"]
     del cookie["_output_dir"]
-    (_PROJECT_PATH / "cookie.json").write_text(json.dumps(cookie, indent=2))
+    (_PROJECT_PATH / ".cookiecutter.json").write_text(json.dumps({"cookiecutter": cookie}, indent=2) + "\n", encoding="utf-8")
 
     print(_CONGRATS)
